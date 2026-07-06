@@ -33,9 +33,16 @@ Everything else (Python 3.12, Flask) is installed inside the container automatic
 
 Installing Podman
 
-macOS: brew install podman then podman machine init && podman machine start
-Fedora / RHEL: sudo dnf install podman
-Ubuntu / Debian: sudo apt install podman
+
+macOS: 
+   brew install podman then podman machine init && podman machine start
+
+Fedora / RHEL: 
+   sudo dnf install podman
+
+Ubuntu / Debian: 
+   sudo apt install podman
+
 Windows: install Podman Desktop, or run this inside WSL2
 
 ##############################################################################
