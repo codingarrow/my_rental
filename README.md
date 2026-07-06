@@ -6,6 +6,12 @@ The app binds to 0.0.0.0 inside the container (set in app.py) so the mapped port
 No database, no Node, no build tooling. Keeping it simple on purpose (KISS).
 
 
+OPTION 1 Running it assuming the original README was followed no PODMAN  plain python
+
+pip install -r requirements.txt
+python app.py
+
+
 ##############################################################################
 Podman?
 Running in a container means anyone can start the exact same app with one command — no "works on my machine" issues, no fiddling with Python versions or virtual environments. Podman is a drop-in, daemonless alternative to Docker (the commands are nearly identical).
@@ -20,7 +26,7 @@ Podman	        4.x or newer	Builds and runs the container	             podman --
 Bash	        any	        Runs rebuild.sh (built into macOS/Linux; 
                                 on Windows use WSL or Git Bash)	             bash --version
 
-Everything else (Python 3.12, Flask) is installed inside the container automatically from the Dockerfile — you do not need Python installed on the host for Option B.
+Everything else (Python 3.12, Flask) is installed inside the container automatically from the Dockerfile — you do not need Python installed on the host for Option 2.
 
 Installing Podman
 macOS: brew install podman then podman machine init && podman machine start
@@ -31,16 +37,12 @@ Windows: install Podman Desktop, or run this inside WSL2
 
 ##############################################################################
 
-OPTION 1 Running it with PODMAN
+OPTION 2 Running it with PODMAN
 From the project folder:
 
 chmod +x rebuild.sh   # only needed the first time
 ./rebuild.sh
 
-
-OPTION 2 Running it assuming the original README was followed no PODMAN  plain python
-pip install -r requirements.txt
-python app.py
 
 ##############################################################################
 
@@ -56,7 +58,7 @@ Maps host port 5000 → container port 5000 (-p 5000:5000).
 Mounts bookings.json from the host into the container (-v), so bookings persist even after you rebuild.
 
 
-Useful commands
+Useful OPTION 2 commands
 
 # See if the container is running
 podman ps
