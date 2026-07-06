@@ -1,6 +1,7 @@
 
 
 Notes
+
 The app binds to 0.0.0.0 inside the container (set in app.py) so the mapped port is reachable from the host — this is required for containers and is already configured.
 No database, no Node, no build tooling. Keeping it simple on purpose (KISS).
 
@@ -30,18 +31,22 @@ Windows: install Podman Desktop, or run this inside WSL2
 
 ##############################################################################
 
-Running it
+OPTION 1 Running it with PODMAN
 From the project folder:
 
 chmod +x rebuild.sh   # only needed the first time
 ./rebuild.sh
 
 
+OPTION 2 Running it assuming the original README was followed no PODMAN  plain python
+pip install -r requirements.txt
+python app.py
+
+##############################################################################
 
 Then open http://localhost:5000 in your browser.
 
 That's it. The script builds the image, stops any old copy, and starts the app on port 5000.
-
 
 What rebuild.sh does (?)
 Removes any existing equipment-rental container.
@@ -69,14 +74,16 @@ podman start equipment-rental
 podman rm -f equipment-rental
 
 
-
-
-
 Troubleshooting
 
-Problem	                         Likely cause / fix
-port is already allocated	Something else is on port 5000. Stop it, or change HOST_PORT in rebuild.sh.
-permission denied on bookings.json	On SELinux systems the :z flag in the mount handles this — make sure it's present (it is in the provided rebuild.sh).
-Bookings disappear after rebuild	The -v volume mount isn't working — confirm bookings.json exists in the project folder before running.
-Can't reach localhost:5000 on macOS	Make sure the Podman machine is running: podman machine start.
-./rebuild.sh: permission denied	Run chmod +x rebuild.sh first.
+Problem	                                        Likely cause / fix
+
+port is already allocated           	         Something else is on port 5000. Stop it, or change HOST_PORT in rebuild.sh.
+
+permission denied on bookings.json	         On SELinux systems the :z flag in the mount handles this — make sure it's present (it is in the provided rebuild.sh).
+
+Bookings disappear after rebuild	         The -v volume mount isn't working — confirm bookings.json exists in the project folder before running.
+
+Can't reach localhost:5000 on macOS	         Make sure the Podman machine is running: podman machine start.
+
+./rebuild.sh: permission denied	                 Run chmod +x rebuild.sh first.
