@@ -20,20 +20,23 @@ Running in a container means anyone can start the exact same app with one comman
 Requirements
 You only need two things installed on the host:
 
-Software	Version	        Purpose	                                     Check it's installed
+Software	            Version	        Purpose	                                     Check it's installed
 
-Podman	        4.x or newer	Builds and runs the container	             podman --version
-Bash	        any	        Runs rebuild.sh (built into macOS/Linux; 
-                                on Windows use WSL or Git Bash)	             bash --version
+
+Podman	                    4.x or newer	Builds and runs the container	             podman --version
+
+
+Bash	                     any	        Runs rebuild.sh (built into macOS/Linux; 
+                                                on Windows use WSL or Git Bash)	             bash --version
 
 Everything else (Python 3.12, Flask) is installed inside the container automatically from the Dockerfile — you do not need Python installed on the host for Option 2.
 
 Installing Podman
+
 macOS: brew install podman then podman machine init && podman machine start
 Fedora / RHEL: sudo dnf install podman
 Ubuntu / Debian: sudo apt install podman
 Windows: install Podman Desktop, or run this inside WSL2
-
 
 ##############################################################################
 
